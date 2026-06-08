@@ -1,15 +1,16 @@
 # PATINA
 
-PATINA is a Rust workspace for rebuilding and extending the ideas behind the older KLMC/SCOTT
-structure-search workflow.
+PATINA (  is a Rust workspace for atomistic topology, inference, and networked assembly. It provides a modular foundation for structure search, simulation orchestration, scientific workflows, and extensible computational materials tooling.
+
+the name PATINA comes from: 
 
 For a concise public overview, start with the [PATINA Project Summary](PROJECT_SUMMARY.md). The
 README below is the working entry point for setup, crate groups, and local tooling.
 
 The main purpose is simple: keep the scientific logic, workflow orchestration, external program
-interfaces, and documentation in one place, but with clearer boundaries than the older codebase had.
-The project is still evolving, so this repository should be read as a working research software
-workspace rather than a small finished library.
+interfaces, and documentation in one place, but with clearer boundaries.
+The project is in a alpha phase, so this repository should be read as a working research software
+workspace rather than a finished library.
 
 At the moment PATINA is focused on:
 
@@ -17,12 +18,7 @@ At the moment PATINA is focused on:
 - reusable Rust kernels for structure handling, topology, symmetry, and search logic
 - clean adapter boundaries for external tools such as GULP, Janus/MACE, CP2K, RASPA-like workflows,
   Dreadnaut/nauty, and Python-backed specialist runtimes
-- parity work against older KLMC/SCOTT behaviour where that history still matters
 - documentation that explains both the chemistry and the software architecture
-
-The repo is intentionally not a dump of every run, scratch directory, environment, or private
-campaign note. The committed surface is the code, the guide, the workspace manifests, and the
-commands needed to work with them.
 
 ## What This Repo Contains
 
@@ -31,7 +27,6 @@ documentation under `guide/`.
 
 Important top-level files:
 
-- `PROJECT_SUMMARY.md` gives the one-page GitHub-facing overview.
 - `Cargo.toml` defines the Rust workspace and shared dependencies.
 - `Cargo.lock` pins the current Rust dependency graph.
 - `Justfile` contains the common local commands for checks, docs, Python environments, and native
@@ -40,7 +35,7 @@ Important top-level files:
 - `crates/` contains the Rust crates.
 
 The workspace is split by responsibility. That split matters more than the exact crate list, because
-some names will probably still change as the system gets cleaner.
+some names will probably still change as the system design gets cleaner.
 
 ## The Main Crate Groups
 
@@ -88,7 +83,7 @@ External and specialist lanes:
 - `patina-external`
   Adapters for external programs and their input/output contracts.
 - `patina-raspa`
-  Periodic framework and adsorption-facing experiments.
+  Periodic framework RASPA like patterns and adsorption facing experiments.
 - `patina-emulate`
   Surrogate/emulator runtime work, with a Python package under the crate.
 - `patina-llm`
@@ -104,20 +99,6 @@ Interfaces and support:
   Analysis, plotting, legacy XYZ handling, and GA helper commands.
 - `patina-test`
   Workspace-level fixtures and parity tests.
-
-## What Is Not In The Repo
-
-The repository deliberately ignores local and private material:
-
-- build output such as `target/`
-- Python virtual environments and caches
-- `runs/`, `scratch/`, `out/`, and other generated campaign data
-- private notes under local `docs/`
-- local screenshots, archives, and machine-specific build products
-- compiled native binaries produced on one machine
-
-This is important because the public project should be reproducible from source, not from whatever
-happened to exist on my laptop during a campaign.
 
 ## Getting Started
 
@@ -216,7 +197,7 @@ The generated environments live under `venvs/` and are ignored by Git.
 
 For a first build on Young, keep the `uv` cache and Cargo target tree in your own scratch space,
 bootstrap the Python runtimes from a login node, then build the Rust driver in release mode:
-
+Example for a HPC workflow (YOUNG): 
 ```bash
 module unload -f compilers mpi gcc-libs || true
 module load beta-modules
@@ -277,7 +258,7 @@ If you are new to the project, read:
 
 ## Development Notes
 
-The clean mental model is:
+A clean software appraoch is adopted for : 
 
 - keep scientific semantics inward
 - keep orchestration around those semantics
