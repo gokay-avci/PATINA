@@ -1,0 +1,191 @@
+name: Rust Core CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: rust-core-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  RUST_BACKTRACE: "1"
+  RUSTFLAGS: "-D warnings"
+
+jobs:
+  fmt:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable with rustfmt
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+
+      - name: Check Rust formatting
+        run: cargo fmt --all -- --check
+
+  public-workspace:
+    name: Public workspace check, lint, and test
+    runs-on: ubuntu-latest
+    needs: fmt
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable with clippy
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Cache Cargo and target directories
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Show toolchain versions
+        run: |
+          rustc --version
+          cargo --version
+
+      - name: Validate Cargo metadata
+        run: cargo metadata --locked --format-version 1 --no-deps > /tmp/cargo-metadata.json
+
+      - name: Check public workspace
+        run: |
+          cargo check \
+            --workspace \
+            --exclude patina-syva \
+            --all-targets \
+            --locked
+
+      - name: Lint public workspace
+        run: |
+          cargo clippy \
+            --workspace \
+            --exclude patina-syva \
+            --all-targets \
+            --locked \
+            -- \
+            -D warnings
+
+      - name: Test public workspace
+        run: |
+          cargo test \
+            --workspace \
+            --exclude patina-syva \
+            --all-targets \
+            --locked
+
+  syva-compile-only:
+    name: SYVA compile and lint without private fixtures
+    runs-on: ubuntu-latest
+    needs: fmt
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable with clippy
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Cache Cargo and target directories
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Check that private fixture directory is absent
+        run: |
+          test ! -d extra
+          test ! -d crates/patina-syva/../../extra
+
+      - name: Check patina-syva compiles
+        run: |
+          cargo check \
+            -p patina-syva \
+            --all-targets \
+            --locked
+
+      - name: Lint patina-syva
+        run: |
+          cargo clippy \
+            -p patina-syva \
+            --all-targets \
+            --locked \
+            -- \
+            -D warnings
+
+  docs:
+    name: Documentation build
+    runs-on: ubuntu-latest
+    needs:
+      - public-workspace
+      - syva-compile-only
+
+    env:
+      RUSTDOCFLAGS: "-D warnings"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo and target directories
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Build public Rust documentation
+        run: |
+          cargo doc \
+            --workspace \
+            --exclude patina-syva \
+            --no-deps \
+            --locked
+
+      - name: Check patina-syva documentation compiles
+        run: |
+          cargo doc \
+            -p patina-syva \
+            --no-deps \
+            --locked
+
+  minimal-dependency-check:
+    name: Dependency and feature sanity
+    runs-on: ubuntu-latest
+    needs: fmt
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo and target directories
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Check workspace with locked dependencies
+        run: cargo check --workspace --exclude patina-syva --locked
+
+      - name: Check patina-syva with locked dependencies
+        run: cargo check -p patina-syva --locked
