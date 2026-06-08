@@ -1,0 +1,31 @@
+[package]
+name = "patina-app"
+version = "0.1.0"
+edition.workspace = true
+description = "Local-first Tauri desktop application for PATINA workflows."
+license = "MIT"
+readme = "README.md"
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "2.5.6", features = [] }
+
+[dependencies]
+anyhow.workspace = true
+async-trait = "0.1"
+blake3 = "1"
+patina-sci-kernel = { path = "../patina-sci-kernel" }
+patina-dreadnaut = { path = "../patina-dreadnaut" }
+patina-perturber = { path = "../patina-perturber" }
+patina-raspa = { path = "../patina-raspa" }
+patina-surface = { path = "../patina-surface" }
+patina-syva = { path = "../patina-syva" }
+patina-types = { path = "../patina-types" }
+serde.workspace = true
+serde_json.workspace = true
+surrealdb = { version = "2", features = ["kv-rocksdb"] }
+tauri = { version = "2.10.3", features = [] }
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "patina-perturber"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+patina-dreadnaut = { path = "../patina-dreadnaut" }
+patina-sci-kernel = { workspace = true, features = ["bridge-patina-types"] }
+patina-types = { path = "../patina-types" }
+nalgebra = "0.34"
+rand = "0.8"
+rand_distr = "0.4"
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true
+tempfile.workspace = true

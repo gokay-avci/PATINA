@@ -1,0 +1,15 @@
+[package]
+name = "patina-runner"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+patina-external = { path = "../patina-external" }
+patina-types = { path = "../patina-types" }
+num_cpus.workspace = true
+rayon.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

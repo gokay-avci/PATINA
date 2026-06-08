@@ -1,0 +1,58 @@
+[book]
+title = "PATINA Book"
+authors = ["PATINA contributors"]
+description = "Scientific computing, structure search, and architecture notes for patina."
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[rust]
+edition = "2021"
+
+[preprocessor.bib]
+command = "../tools/mdbook-bib-compat/target/debug/mdbook-bib-compat"
+bibliography = "references.bib"
+citation-syntax = "pandoc"
+title = "8. Bibliography"
+
+[preprocessor.mermaid]
+command = "../tools/mdbook-mermaid-compat/target/debug/mdbook-mermaid-compat"
+
+[preprocessor.tabs]
+command = "mdbook-tabs"
+
+[preprocessor.cmdrun]
+command = "../tools/mdbook-cmdrun-compat/target/debug/mdbook-cmdrun-compat"
+renderers = ["html"]
+after = ["links"]
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+admonitions = true
+mathjax-support = true
+additional-css = ["theme/tabs.css", "theme/custom.css"]
+additional-js = [
+  "mermaid.min.js",
+  "mermaid-init.js",
+  "theme/header-cleanup.js",
+  "theme/tabs.js",
+  "theme/vendor/plotly-3.4.0.min.js",
+  "theme/vendor/3Dmol-2.5.3.min.js",
+  "theme/interactive-science.js",
+]
+no-section-label = true
+site-url = "/patina/"
+
+[output.html.playground]
+editable = true
+runnable = true
+line-numbers = true
+
+[output.html.fold]
+enable = true
+level = 1

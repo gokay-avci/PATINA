@@ -1,0 +1,448 @@
+# =============================================================================
+# PATINA public repository allowlist
+# =============================================================================
+# SAFETY MODEL:
+#   1. Ignore everything by default.
+#   2. Re-allow only curated source/project files.
+#   3. Re-ignore secrets, caches, build outputs, generated data, docs,
+#      archives, venvs, node_modules, scratch/runs, and local machine state.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Default deny
+# -----------------------------------------------------------------------------
+*
+!*/
+
+# -----------------------------------------------------------------------------
+# Root-level public files
+# -----------------------------------------------------------------------------
+!.gitignore
+!Cargo.toml
+!Cargo.lock
+!Justfile
+!LICENSE
+!LICENSES.md
+!PROJECT_SUMMARY.md
+!README.md
+!README
+
+!.github/
+!.github/**/
+
+# Keep these only if you want the Python helper/package published.
+!pyproject.toml
+!uv.lock
+
+# -----------------------------------------------------------------------------
+# Public source trees
+# -----------------------------------------------------------------------------
+!crates/
+!crates/**/
+
+!python/
+!python/**/
+
+!tools/
+!tools/**/
+
+!guide/
+!guide/**/
+
+!demo_notebooks/
+!demo_notebooks/**/
+
+# Optional public experiment/source tree.
+!symmetry_experiment/
+!symmetry_experiment/**/
+
+!patina_debugging/
+!patina_debugging/**/
+
+# -----------------------------------------------------------------------------
+# Allow source, config, docs-like lightweight files inside allowed source trees
+# -----------------------------------------------------------------------------
+!**/*.rs
+!**/*.py
+!**/*.pyi
+!**/*.toml
+!**/*.lock
+!**/*.yaml
+!**/*.yml
+!**/*.json
+!**/*.ipynb
+!**/*.md
+!**/*.txt
+!**/*.rst
+!**/*.typ
+!**/*.bib
+!**/*.tex
+!**/*.sh
+!**/*.bash
+!**/*.zsh
+!**/*.fish
+!**/*.js
+!**/*.css
+!**/*.svelte
+!**/*.ts
+!**/*.just
+!**/Justfile
+!**/Dockerfile
+!**/*.dockerfile
+!**/*.nix
+!**/*.ron
+!**/*.csv.example
+!**/*.env.example
+!**/*.example
+!**/*.template
+!**/*.sample
+
+# PATINA app build shims for optional browser-only dependencies.
+!crates/patina-app/web/vendor/*.js
+
+# Curated guide artwork.
+!guide/src/assets/**/*.svg
+
+# -----------------------------------------------------------------------------
+# Lightweight deliberate scientific fixtures/examples only
+# -----------------------------------------------------------------------------
+!**/fixtures/**/*.xyz
+!**/fixtures/**/*.cif
+!**/fixtures/**/*.mol
+!**/fixtures/**/*.mol2
+!**/fixtures/**/*.sdf
+!**/fixtures/**/*.pdb
+!**/fixtures/**/*.csv
+!**/fixtures/**/*.json
+
+!**/examples/**/*.xyz
+!**/examples/**/*.cif
+!**/examples/**/*.mol
+!**/examples/**/*.mol2
+!**/examples/**/*.sdf
+!**/examples/**/*.pdb
+!**/examples/**/*.csv
+!**/examples/**/*.json
+
+# =============================================================================
+# FINAL OVERRIDES: things that must never be published
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Do not publish docs from this working tree
+# -----------------------------------------------------------------------------
+docs/
+docs/**
+**/docs/0_old/
+**/docs/0_old/**
+
+# Generated guide/mdBook/notebook outputs
+guide/book/
+guide/notebook/_site/
+**/book/
+**/_site/
+demo_notebooks/runs/
+demo_notebooks/runs/**
+
+# -----------------------------------------------------------------------------
+# Secrets and credentials
+# -----------------------------------------------------------------------------
+**/.env
+**/.env.*
+**/*.env
+
+# Real local vLLM runtime config; keep only *.env.example
+crates/patina-llm/install/vllm/vllm.env
+**/vllm.env
+!**/*.env.example
+
+**/*secret*
+**/*secrets*
+**/*credential*
+**/*credentials*
+**/*token*
+**/*apikey*
+**/*api_key*
+**/*private*
+**/*password*
+**/*passwd*
+
+# Re-allow clearly marked non-secret examples/templates after broad secret words.
+!**/*secret*.example
+!**/*secrets*.example
+!**/*credential*.example
+!**/*credentials*.example
+!**/*token*.example
+!**/*apikey*.example
+!**/*api_key*.example
+!**/*password*.example
+!**/*passwd*.example
+!**/*.template
+!**/*.sample
+
+**/*.pem
+**/*.key
+**/*.crt
+**/*.csr
+**/*.p12
+**/*.pfx
+**/*.asc
+**/*.gpg
+
+**/id_rsa
+**/id_rsa.pub
+**/id_ed25519
+**/id_ed25519.pub
+**/known_hosts
+**/authorized_keys
+**/ssh_config
+
+**/credentials.json
+**/client_secret*.json
+**/service-account*.json
+**/service_account*.json
+**/gcloud*.json
+**/firebase*.json
+**/kaggle.json
+**/wandb/
+**/.netrc
+**/.pypirc
+**/.npmrc
+**/.cargo/credentials
+**/.cargo/credentials.toml
+
+# -----------------------------------------------------------------------------
+# Rust build artefacts
+# -----------------------------------------------------------------------------
+target/
+**/target/
+**/*.rlib
+**/*.rmeta
+**/*.dSYM/
+**/*.profraw
+**/*.profdata
+
+# -----------------------------------------------------------------------------
+# Python environments and caches
+# -----------------------------------------------------------------------------
+venvs/
+venv/
+.venv/
+env/
+**/venvs/
+**/venv/
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.tox/
+**/.nox/
+**/.coverage
+**/htmlcov/
+**/.ipynb_checkpoints/
+
+.uv-cache/
+**/.uv-cache/
+.pip-cache/
+**/.pip-cache/
+
+# -----------------------------------------------------------------------------
+# Janus/matplotlib/local scientific caches
+# -----------------------------------------------------------------------------
+.janus-cache/
+.mpl-cache/
+**/.janus-cache/
+**/.mpl-cache/
+
+# -----------------------------------------------------------------------------
+# Node/web artefacts
+# -----------------------------------------------------------------------------
+node_modules/
+**/node_modules/
+**/.next/
+**/.svelte-kit/
+**/dist/
+**/build/
+**/coverage/
+**/.turbo/
+**/.vite/
+
+# Generated frontend/app artefacts
+**/gen/
+
+# -----------------------------------------------------------------------------
+# Local runs, scratch, archives, outputs
+# -----------------------------------------------------------------------------
+runs/
+scratch/
+experiments/
+specs/
+inputs/
+out/
+tmp/
+temp/
+logs/
+carry_on/
+extra/
+Archive.zip
+crates.zip
+Book2.xlsx
+*.xlsx
+*.xls
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+gulptmp_*
+**/.DS_Store
+**/.jupyterlite.doit.db
+
+**/runs/
+**/scratch/
+**/experiments/
+**/specs/
+**/inputs/
+**/out/
+**/tmp/
+**/temp/
+**/logs/
+
+.nested-git-backup-*/
+**/.nested-git-backup-*/
+
+# -----------------------------------------------------------------------------
+# Scientific/generated heavy data
+# -----------------------------------------------------------------------------
+**/*.npy
+**/*.npz
+**/*.h5
+**/*.hdf5
+**/*.pkl
+**/*.pickle
+**/*.parquet
+**/*.feather
+**/*.arrow
+**/*.sqlite
+**/*.sqlite3
+**/*.db
+
+# Generated simulation/calculation outputs
+**/*.log
+**/*.out
+**/*.err
+**/*.dump
+**/*.traj
+**/*.chk
+**/*.fchk
+**/*.cube
+**/*.dx
+**/*.xsf
+**/*.chg
+**/*.CHGCAR
+**/*.WAVECAR
+**/*.vasp
+**/*.castep
+**/*.cell
+**/*.param
+**/*.res
+**/*.gout
+**/*.gin
+
+# Molecular files are ignored by default unless deliberately under fixtures/examples.
+**/*.xyz
+**/*.cif
+**/*.mol
+**/*.mol2
+**/*.sdf
+**/*.pdb
+
+!**/fixtures/**/*.xyz
+!**/fixtures/**/*.cif
+!**/fixtures/**/*.mol
+!**/fixtures/**/*.mol2
+!**/fixtures/**/*.sdf
+!**/fixtures/**/*.pdb
+!**/fixtures/**/*.csv
+!**/fixtures/**/*.json
+
+!**/examples/**/*.xyz
+!**/examples/**/*.cif
+!**/examples/**/*.mol
+!**/examples/**/*.mol2
+!**/examples/**/*.sdf
+!**/examples/**/*.pdb
+!**/examples/**/*.csv
+!**/examples/**/*.json
+
+# Deliberate non-molecular fixtures used by tests.
+!**/fixtures/**/*.ascii
+!**/fixtures/**/*.can
+!**/fixtures/**/*.dat
+!**/fixtures/**/*.gin
+!**/fixtures/**/*.got
+!**/fixtures/**/*.gout
+!**/fixtures/**/*.in
+!**/fixtures/**/*.out
+!**/fixtures/**/energy
+!**/fixtures/**/log
+
+# Curated guide scientific assets.
+!guide/src/assets/science/**/*.cif
+!guide/src/assets/science/**/*.json
+!guide/src/assets/science/**/*.xyz
+
+# App source assets.
+!crates/patina-app/icons/*.png
+!crates/patina-app/web/index.html
+
+# Notebook seed inputs; generated notebook runs remain ignored.
+!demo_notebooks/inputs/
+!demo_notebooks/inputs/**/*.json
+
+# Bundled nauty source distribution required by `just build-nauty`.
+!crates/patina-dreadnaut/nauty25r9/README*
+!crates/patina-dreadnaut/nauty25r9/*.ans
+!crates/patina-dreadnaut/nauty25r9/*.c
+!crates/patina-dreadnaut/nauty25r9/*.dre
+!crates/patina-dreadnaut/nauty25r9/*.h
+!crates/patina-dreadnaut/nauty25r9/*.in
+!crates/patina-dreadnaut/nauty25r9/*.txt
+!crates/patina-dreadnaut/nauty25r9/config.guess
+!crates/patina-dreadnaut/nauty25r9/config.sub
+!crates/patina-dreadnaut/nauty25r9/configure
+!crates/patina-dreadnaut/nauty25r9/configure.ac
+!crates/patina-dreadnaut/nauty25r9/install-sh
+!crates/patina-dreadnaut/nauty25r9/makefile.basic
+!crates/patina-dreadnaut/nauty25r9/makefile.in
+!crates/patina-dreadnaut/nauty25r9/nug25.pdf
+!crates/patina-dreadnaut/nauty25r9/runalltests
+!crates/patina-dreadnaut/src/builtin_atom_specs.csv
+
+# -----------------------------------------------------------------------------
+# Vendored/build-system generated config/provenance
+# -----------------------------------------------------------------------------
+crates/patina-dreadnaut/nauty25r9/config.txt
+crates/patina-dreadnaut/nauty25r9/patina_build_provenance.txt
+
+# -----------------------------------------------------------------------------
+# OS/editor noise
+# -----------------------------------------------------------------------------
+.DS_Store
+**/.DS_Store
+**/.AppleDouble
+**/._*
+**/.Spotlight-V100/
+**/.Trashes
+**/.fseventsd
+
+.vscode/
+.idea/
+**/.vscode/
+**/.idea/
+*.swp
+*.swo
+*~

@@ -1,0 +1,13 @@
+[package]
+name = "mdbook-mermaid-compat"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+clap = "4"
+mdbook-mermaid = "0.17.0"
+mdbook-preprocessor = "0.5.2"
+serde_json = "1"

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "patina-stk-python"
+version = "0.1.0"
+description = "RDKit-backed adapter runtime for patina-stk."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "rdkit != 2024.3.5",
+    "scipy>=1.11",
+]
+
+[project.scripts]
+patina-stk-runtime = "patina_stk_runtime.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.11",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/patina_stk_runtime"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

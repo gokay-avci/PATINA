@@ -1,0 +1,33 @@
+{
+  "parent": {
+    "label": "mgo_bulk",
+    "lattice": [
+      [4.2316, 0.0, 0.0],
+      [0.0, 4.2316, 0.0],
+      [0.0, 0.0, 4.2316]
+    ],
+    "periodic_axes": [true, true, true],
+    "atoms": [
+      { "species": "Mg", "fractional": [0.0, 0.0, 0.0] },
+      { "species": "O", "fractional": [0.5, 0.5, 0.5] }
+    ]
+  },
+  "config": {
+    "miller": { "h": 2, "k": 1, "l": 0 },
+    "thickness_angstrom": 15.0,
+    "vacuum_angstrom": 15.0,
+    "cut_strategy": "topology_aware",
+    "cut_offset_fraction": null,
+    "slab_reduction": {
+      "dedup_slab": false,
+      "reduce_slab_inplane": false,
+      "dedup": {
+        "frac_tol": 0.0002,
+        "inplane_only": true,
+        "require_same_element": true
+      }
+    },
+    "reconstruction": "none",
+    "termination_bias": "neutral"
+  }
+}

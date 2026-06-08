@@ -1,0 +1,15 @@
+[package]
+name = "patina-surface"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+patina-raspa = { path = "../patina-raspa" }
+patina-sci-kernel = { workspace = true, features = ["bridge-patina-types"] }
+patina-types = { path = "../patina-types" }
+nalgebra = "0.34"
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

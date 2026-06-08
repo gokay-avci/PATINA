@@ -1,0 +1,21 @@
+[package]
+name = "patina-test"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+camino.workspace = true
+indexmap.workspace = true
+patina-driver = { path = "../patina-driver" }
+patina-dreadnaut.workspace = true
+patina-emulate = { path = "../patina-emulate" }
+patina-evaluator = { path = "../patina-evaluator" }
+patina-perturber = { path = "../patina-perturber" }
+patina-raspa = { path = "../patina-raspa" }
+patina-runtime = { path = "../patina-runtime" }
+patina-sci-kernel = { workspace = true, features = ["bridge-patina-types"] }
+patina-search = { path = "../patina-search" }
+patina-surface = { path = "../patina-surface" }
+patina-types = { path = "../patina-types" }
+tempfile.workspace = true

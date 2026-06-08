@@ -1,0 +1,6 @@
+generation,phase,elapsed_secs,request_count,success_count,failure_count,converged_count,best_energy,mean_energy,worst_energy,boundary_population_size,boundary_valid_population_size,population_size,valid_population_size,duplicate_count,duplicate_hashkey_count,duplicate_pmoi_count,duplicate_energy_tol_count,repopulated_count
+0,initialize,1.2,12,12,0,12,-14.82,-14.10,-13.72,6,6,6,6,0,0,0,0,0
+1,evolve,2.5,10,10,0,10,-15.21,-14.44,-13.98,6,6,6,6,1,1,0,0,0
+2,evolve,3.8,10,9,1,9,-15.67,-14.88,-14.12,6,6,6,6,2,1,1,0,1
+3,evolve,5.1,10,10,0,10,-15.74,-15.02,-14.53,6,6,6,6,1,1,0,0,0
+4,evolve,6.6,10,9,1,9,-15.91,-15.19,-14.66,6,6,6,6,1,1,0,0,1

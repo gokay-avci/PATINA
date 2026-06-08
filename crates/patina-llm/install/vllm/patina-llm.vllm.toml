@@ -1,0 +1,22 @@
+default_provider_id = "vllm-local"
+
+[[providers]]
+id = "vllm-local"
+label = "Local vLLM"
+kind = "Vllm"
+enabled = true
+model = "google/gemma-3-4b-it"
+
+[providers.endpoint]
+base_url = "http://127.0.0.1:8000"
+request_timeout_secs = 120
+
+[providers.endpoint.auth]
+BearerEnv = { env_var = "PATINA_LLM_VLLM_API_KEY" }
+
+[providers.install]
+root = "crates/patina-llm/install/vllm"
+launch_script = "crates/patina-llm/install/vllm/launch_vllm.sh"
+env_file = "crates/patina-llm/install/vllm/vllm.env.example"
+config_example = "crates/patina-llm/install/vllm/patina-llm.vllm.toml"
+notes = "crates/patina-llm/install/vllm/README.md"

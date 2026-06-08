@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "patina-emulate-python"
+version = "0.1.0"
+description = "Isolated AutoEmulate/SVGP runtime adapters for patina-emulate."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+autoemulate = [
+    "ase>=3.22",
+    "autoemulate>=2.0.0",
+    "dscribe>=2.1",
+    "featomic>=0.6",
+    "gpytorch>=1.15.2",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "torch>=2.9.1",
+]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.11",
+]
+
+[project.scripts]
+patina-emulate-runtime = "patina_emulate_runtime.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/patina_emulate_runtime"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

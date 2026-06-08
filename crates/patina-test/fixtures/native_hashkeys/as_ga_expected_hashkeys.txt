@@ -1,0 +1,5 @@
+# One row per fixture:
+# <fixture.xyz> <native_hashkey>
+#
+# Example:
+# 0acf2e63-4f36-4743-af06-b2e5f73c5746.xyz 1_2_3_4

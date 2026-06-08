@@ -1,0 +1,8 @@
+{
+  "LiteBuildConfig": {
+    "output_dir": "_site",
+    "contents": [
+      "content"
+    ]
+  }
+}

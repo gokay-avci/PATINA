@@ -1,0 +1,78 @@
+[workspace]
+members = [
+    "crates/patina-app",
+    "crates/patina-sci-kernel",
+    "crates/patina-stk",
+    "crates/patina-dreadnaut",
+    "crates/patina-arvo",
+    "crates/patina-types",
+    "crates/patina-perturber",
+    "crates/patina-surface",
+    "crates/patina-raspa",
+    "crates/patina-evaluator",
+    "crates/patina-runtime",
+    "crates/patina-ulab",
+    "crates/patina-external",
+    "crates/patina-search",
+    "crates/patina-runner",
+    "crates/patina-driver",
+    "crates/patina-test",
+    "crates/patina-llm",
+    "crates/patina-tui",
+    "crates/patina-emulate",
+    "crates/patina-syva",
+    "crates/patina-tools",
+    "crates/patina-topology",
+]
+# Root-level workspace builds on HPC sites such as Young should stay focused on the
+# scientific/runtime lane. Keep the interactive LLM/TUI crates opt-in via `-p` so a
+# plain `cargo build` does not pull `reqwest`/`ring` into scheduler-oriented builds.
+default-members = [
+    "crates/patina-sci-kernel",
+    "crates/patina-stk",
+    "crates/patina-dreadnaut",
+    "crates/patina-arvo",
+    "crates/patina-types",
+    "crates/patina-perturber",
+    "crates/patina-surface",
+    "crates/patina-raspa",
+    "crates/patina-evaluator",
+    "crates/patina-runtime",
+    "crates/patina-ulab",
+    "crates/patina-external",
+    "crates/patina-search",
+    "crates/patina-runner",
+    "crates/patina-driver",
+    "crates/patina-test",
+    "crates/patina-emulate",
+    "crates/patina-syva",
+    "crates/patina-tools",
+    "crates/patina-topology",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+figment = { version = "0.10.19", features = ["env", "json", "toml"] }
+patina-arvo = { path = "crates/patina-arvo" }
+patina-dreadnaut = { path = "crates/patina-dreadnaut" }
+patina-sci-kernel = { path = "crates/patina-sci-kernel" }
+patina-syva = { path = "crates/patina-syva" }
+patina-tools = { path = "crates/patina-tools" }
+patina-topology = { path = "crates/patina-topology" }
+num_cpus = "1"
+rayon = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+camino = { version = "1", features = ["serde1"] }
+tempfile = "3"
+thiserror = "1"
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+indexmap = { version = "2", features = ["serde"] }

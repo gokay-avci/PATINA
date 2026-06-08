@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "generation_metrics": "traces/generation_metrics.csv",
+    "controller_trace": "traces/controller_trace.csv",
+    "latest_restart_checkpoint": "raw/rust_ga_checkpoint_latest.json"
+  },
+  "backend": "scott_runtime",
+  "population_size": 6,
+  "requested_generations": 5,
+  "run_name": "toy_docs_ga_run",
+  "search_config": {
+    "temperature": 625.0,
+    "step_size": 0.45,
+    "seed": 17
+  },
+  "system": "(MgO)6",
+  "workflow_owner": "scott_staged_ga"
+}

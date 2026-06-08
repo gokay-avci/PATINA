@@ -1,0 +1,13 @@
+[project]
+name = "patina-notebook"
+version = "0.1.0"
+description = "JupyterLite companion for patina docs"
+requires-python = ">=3.11"
+dependencies = [
+  "jupyterlite-core>=0.7,<0.8",
+  "jupyterlite-pyodide-kernel>=0.7,<0.8",
+  "jupyter-server>=2,<3",
+]
+
+[tool.uv]
+package = false

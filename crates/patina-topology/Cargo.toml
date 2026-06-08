@@ -1,0 +1,23 @@
+[package]
+name = "patina-topology"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+blake3 = "1"
+clap.workspace = true
+patina-sci-kernel = { workspace = true }
+patina-dreadnaut = { workspace = true }
+patina-syva = { workspace = true }
+nalgebra = "0.33"
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[[bin]]
+name = "patina-topogen"
+path = "src/bin/patina-topogen.rs"

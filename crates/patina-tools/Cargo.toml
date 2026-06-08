@@ -1,0 +1,19 @@
+[package]
+name = "patina-tools"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+csv = "1.3"
+patina-arvo.workspace = true
+patina-dreadnaut = { path = "../patina-dreadnaut" }
+patina-syva.workspace = true
+patina-types = { path = "../patina-types" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

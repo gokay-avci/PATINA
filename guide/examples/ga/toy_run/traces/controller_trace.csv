@@ -1,0 +1,6 @@
+generation,stage,population_size,valid_population_size,child_count,duplicate_count,duplicate_hashkey_count,duplicate_pmoi_count,duplicate_energy_tol_count,repopulated_count,best_energy,selected_indices
+0,Initialize,6,6,6,0,0,0,0,0,-14.82,
+1,Evolve,6,6,4,1,1,0,0,0,-15.21,0|1|2
+2,Evolve,6,6,4,2,1,1,0,1,-15.67,0|1|3
+3,Evolve,6,6,4,1,1,0,0,0,-15.74,0|2|4
+4,Evolve,6,6,4,1,1,0,0,1,-15.91,0|1|4

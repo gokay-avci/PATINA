@@ -1,0 +1,16 @@
+[package]
+name = "patina-runtime"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+camino.workspace = true
+indexmap.workspace = true
+patina-external = { path = "../patina-external" }
+patina-evaluator = { path = "../patina-evaluator" }
+patina-types = { path = "../patina-types" }
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

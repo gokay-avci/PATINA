@@ -1,0 +1,19 @@
+[package]
+name = "patina-ulab"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+camino.workspace = true
+indexmap.workspace = true
+patina-external = { path = "../patina-external" }
+patina-runtime = { path = "../patina-runtime" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+patina-evaluator = { path = "../patina-evaluator" }
+patina-external = { path = "../patina-external" }
+patina-types = { path = "../patina-types" }
+tempfile.workspace = true

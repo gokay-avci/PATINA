@@ -1,0 +1,9 @@
+[package]
+name = "patina-search"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+patina-sci-kernel = { workspace = true, features = ["bridge-patina-types"] }
+patina-types = { path = "../patina-types" }
+nalgebra = "0.33"

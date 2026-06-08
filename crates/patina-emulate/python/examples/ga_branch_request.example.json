@@ -1,0 +1,98 @@
+{
+  "schema_version": "patina.emulate.surrogate_request.v1",
+  "campaign_id": "campaign-mgo-demo",
+  "branch_id": "ga-branch-001",
+  "workflow": "genetic_algorithm",
+  "task": "score_candidates",
+  "context": {
+    "direction": "downstream",
+    "objective": "score_candidates",
+    "feature_representation": {
+      "family": "global_soap_pca",
+      "version": "v1",
+      "feature_names": [
+        "global_soap_pc1",
+        "global_soap_pc2"
+      ],
+      "provenance_label": "mgo_descriptor_trial"
+    },
+    "targets": [
+      {
+        "name": "formation_energy_ev",
+        "head_kind": "scalar",
+        "fidelity": "janus_mace_high",
+        "unit": "ev"
+      },
+      {
+        "name": "homo_lumo_gap_ev",
+        "head_kind": "scalar",
+        "fidelity": "janus_mace_high",
+        "unit": "ev"
+      }
+    ],
+    "provenance_label": "ga_generation_12"
+  },
+  "feature_names": [
+    "global_soap_pc1",
+    "global_soap_pc2"
+  ],
+  "target_names": [
+    "formation_energy_ev",
+    "homo_lumo_gap_ev"
+  ],
+  "surrogate": {
+    "model_variant": "multitask_whitened_svgp",
+    "epochs": 25,
+    "num_inducing": 12,
+    "batch_size": 8,
+    "lr": 0.05,
+    "n_bootstraps": 2,
+    "random_seed": 42,
+    "log_level": "warning",
+    "objective": "minimize",
+    "primary_target_index": 0
+  },
+  "training_rows": [
+    {
+      "candidate_id": "obs-001",
+      "features": [-1.4, 0.8],
+      "targets": [-1.78, 1.96],
+      "fidelity": "janus_mace_low"
+    },
+    {
+      "candidate_id": "obs-002",
+      "features": [-0.9, 0.3],
+      "targets": [-1.22, 1.88],
+      "fidelity": "janus_mace_low"
+    },
+    {
+      "candidate_id": "obs-003",
+      "features": [0.3, -0.2],
+      "targets": [-1.65, 1.44],
+      "fidelity": "janus_mace_high"
+    },
+    {
+      "candidate_id": "obs-004",
+      "features": [0.8, -0.9],
+      "targets": [-1.94, 1.19],
+      "fidelity": "janus_mace_high"
+    }
+  ],
+  "candidate_rows": [
+    {
+      "candidate_id": "cand-101",
+      "features": [0.1, 0.1],
+      "requested_fidelity": "janus_mace_high"
+    },
+    {
+      "candidate_id": "cand-102",
+      "features": [1.0, -0.4],
+      "requested_fidelity": "janus_mace_high"
+    },
+    {
+      "candidate_id": "cand-103",
+      "features": [-1.1, 0.9],
+      "requested_fidelity": "janus_mace_high"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[package]
+name = "patina-types"
+version = "0.1.0"
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+camino.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

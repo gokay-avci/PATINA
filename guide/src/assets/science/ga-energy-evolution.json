@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "name": "Best energy",
+      "x": [0, 1, 2, 3, 4],
+      "y": [-14.82, -15.21, -15.67, -15.74, -15.91],
+      "line": { "color": "#2f6b62", "width": 4 },
+      "marker": { "size": 10, "color": "#2f6b62" },
+      "hovertemplate": "Generation %{x}<br>Best energy %{y:.2f} eV<extra></extra>"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "name": "Mean energy",
+      "x": [0, 1, 2, 3, 4],
+      "y": [-14.10, -14.44, -14.88, -15.02, -15.19],
+      "line": { "color": "#315c73", "width": 3, "dash": "solid" },
+      "marker": { "size": 8, "color": "#315c73" },
+      "hovertemplate": "Generation %{x}<br>Mean energy %{y:.2f} eV<extra></extra>"
+    },
+    {
+      "type": "bar",
+      "name": "Duplicates",
+      "x": [0, 1, 2, 3, 4],
+      "y": [0, 1, 2, 1, 1],
+      "yaxis": "y2",
+      "opacity": 0.28,
+      "marker": { "color": "#8b4b3e" },
+      "hovertemplate": "Generation %{x}<br>Duplicates %{y}<extra></extra>"
+    },
+    {
+      "type": "scatter",
+      "mode": "markers",
+      "name": "Repopulated",
+      "x": [0, 1, 2, 3, 4],
+      "y": [0, 0, 1, 0, 1],
+      "yaxis": "y2",
+      "marker": {
+        "size": 12,
+        "symbol": "diamond",
+        "color": "#d3a85d",
+        "line": { "color": "#8b6a28", "width": 1.2 }
+      },
+      "hovertemplate": "Generation %{x}<br>Repopulated %{y}<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": { "text": "Generation metrics in reporting form", "x": 0.03 },
+    "xaxis": {
+      "title": "Generation",
+      "tickmode": "linear",
+      "dtick": 1,
+      "gridcolor": "rgba(32, 48, 58, 0.08)"
+    },
+    "yaxis": {
+      "title": "Energy (eV)",
+      "gridcolor": "rgba(32, 48, 58, 0.08)",
+      "zeroline": false
+    },
+    "yaxis2": {
+      "title": "Operational count",
+      "overlaying": "y",
+      "side": "right",
+      "rangemode": "tozero",
+      "showgrid": false
+    },
+    "legend": {
+      "orientation": "h",
+      "x": 0,
+      "y": 1.12
+    }
+  },
+  "config": {
+    "responsive": true,
+    "displaylogo": false,
+    "modeBarButtonsToRemove": ["lasso2d", "select2d"]
+  }
+}

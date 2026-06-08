@@ -1,0 +1,24 @@
+{
+  "workflow_owner": "scott_staged_ga",
+  "checkpoint_version": 1,
+  "generation_completed": 4,
+  "population_size": 6,
+  "requested_generations": 5,
+  "seed": 17,
+  "system": "(MgO)6",
+  "backend": "scott_runtime",
+  "janus_mode": "gulp",
+  "search_config": {
+    "temperature": 625.0,
+    "step_size": 0.45,
+    "population_size": 6,
+    "max_steps": 5,
+    "seed": 17
+  },
+  "generation_state": {
+    "generation": 4,
+    "population": [],
+    "elites": [],
+    "repopulation": []
+  }
+}

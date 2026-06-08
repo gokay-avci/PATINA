@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">PATINA scope map</title>
+  <desc id="desc">A simple diagram showing legacy context feeding into public PATINA documentation and release readiness.</desc>
+  <rect width="720" height="320" fill="#f5f1e8"/>
+  <rect x="24" y="40" width="180" height="92" rx="16" fill="#3c5a4d"/>
+  <rect x="270" y="40" width="180" height="92" rx="16" fill="#d87c4a"/>
+  <rect x="516" y="40" width="180" height="92" rx="16" fill="#315c73"/>
+  <rect x="147" y="188" width="180" height="92" rx="16" fill="#7b8b5a"/>
+  <rect x="393" y="188" width="180" height="92" rx="16" fill="#7f4f78"/>
+  <text x="114" y="78" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Legacy</text>
+  <text x="114" y="108" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">KLMC3</text>
+  <text x="360" y="78" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Rust</text>
+  <text x="360" y="108" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Workspace</text>
+  <text x="606" y="78" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Public</text>
+  <text x="606" y="108" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Docs</text>
+  <text x="237" y="226" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">GitHub</text>
+  <text x="237" y="256" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Baseline</text>
+  <text x="483" y="226" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">crates.io</text>
+  <text x="483" y="256" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#ffffff">Candidates</text>
+  <path d="M204 86 H270" stroke="#5e5a55" stroke-width="6" fill="none"/>
+  <path d="M450 86 H516" stroke="#5e5a55" stroke-width="6" fill="none"/>
+  <path d="M360 132 V188" stroke="#5e5a55" stroke-width="6" fill="none"/>
+  <path d="M270 234 H327" stroke="#5e5a55" stroke-width="6" fill="none"/>
+  <path d="M393 234 H327" stroke="#5e5a55" stroke-width="6" fill="none"/>
+  <circle cx="270" cy="86" r="7" fill="#5e5a55"/>
+  <circle cx="516" cy="86" r="7" fill="#5e5a55"/>
+  <circle cx="360" cy="188" r="7" fill="#5e5a55"/>
+</svg>

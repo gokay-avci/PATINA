@@ -1,0 +1,18 @@
+[package]
+name = "mdbook-cmdrun-compat"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+anyhow = "1"
+cfg-if = "1"
+clap = { version = "4", features = ["std"] }
+lazy_static = "1"
+mdbook-preprocessor = "0.5.2"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"

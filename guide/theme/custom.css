@@ -1,0 +1,310 @@
+:root {
+  /* Typography control panel.
+     Change --patina-type-scale first when you want the whole book larger or smaller.
+     On a 16-inch MacBook Pro, a range around 0.92 to 1.00 is usually the sweet spot. */
+  --patina-type-scale: 0.95;
+  --patina-font-body-family: Georgia, Charter, "Palatino Linotype", "Book Antiqua", "Iowan Old Style", "URW Palladio L", serif;
+  --patina-font-heading-family: "Avenir Next", "Segoe UI", "Noto Sans", "Helvetica Neue", sans-serif;
+  --patina-font-code-family: "Berkeley Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", monospace;
+  --patina-font-body: calc(16px * var(--patina-type-scale));
+  --patina-font-body-line: 1.72;
+  --patina-font-h1: calc(44px * var(--patina-type-scale));
+  --patina-font-h2: calc(29px * var(--patina-type-scale));
+  --patina-font-h3: calc(22px * var(--patina-type-scale));
+  --patina-font-lead: calc(18px * var(--patina-type-scale));
+  --patina-font-lead-line: 1.62;
+  --patina-font-fallback: var(--patina-font-body);
+
+  /* Mermaid control panel.
+     Change these values first when you want diagram sizing to move in a predictable way. */
+  --patina-mermaid-font-size: 18px;
+  --patina-mermaid-min-width: 980px;
+  --patina-mermaid-max-width: 1180px;
+  --patina-mermaid-padding: 0.95rem;
+  --patina-mermaid-radius: 14px;
+  --patina-mermaid-border-color: rgba(32, 48, 58, 0.16);
+
+  --patina-figure-height: 440px;
+  --patina-paper: #f5f1e8;
+  --patina-paper-strong: #ebe4d6;
+  --patina-ink: #20303a;
+  --patina-muted: #55646c;
+  --patina-line: rgba(32, 48, 58, 0.16);
+  --patina-science: #2f6b62;
+  --patina-software: #8b4b3e;
+  --patina-accent: #315c73;
+  --patina-shadow: 0 18px 50px rgba(33, 43, 51, 0.08);
+}
+
+html.light,
+html.rust {
+  --bg: linear-gradient(180deg, #f7f3ec 0%, #efe7da 100%);
+  --fg: var(--patina-ink);
+  --sidebar-bg: #eee5d6;
+  --sidebar-fg: #314048;
+  --sidebar-non-existant: #9a6d62;
+  --sidebar-active: var(--patina-software);
+  --sidebar-spacer: rgba(32, 48, 58, 0.1);
+  --scrollbar: rgba(49, 64, 72, 0.35);
+  --icons: #6f7f88;
+  --icons-hover: var(--patina-software);
+  --links: #24636b;
+  --inline-code-color: #8b4b3e;
+  --theme-popup-bg: #f5efe4;
+  --theme-popup-border: rgba(32, 48, 58, 0.15);
+  --theme-hover: rgba(36, 99, 107, 0.12);
+  --quote-bg: rgba(49, 92, 115, 0.08);
+  --quote-border: rgba(49, 92, 115, 0.3);
+  --table-border-color: rgba(32, 48, 58, 0.12);
+  --table-alternate-bg: rgba(255, 255, 255, 0.4);
+  --searchbar-bg: rgba(255, 255, 255, 0.75);
+  --searchbar-fg: var(--patina-ink);
+  --searchbar-shadow-color: rgba(0, 0, 0, 0.05);
+  --searchresults-header-fg: var(--patina-muted);
+  --searchresults-border-color: rgba(32, 48, 58, 0.08);
+  --searchresults-li-bg: rgba(255, 255, 255, 0.65);
+  --search-mark-bg: rgba(215, 191, 113, 0.55);
+}
+
+html.navy,
+html.coal,
+html.ayu {
+  --bg: linear-gradient(180deg, #182229 0%, #11181d 100%);
+  --fg: #e8e1d6;
+  --sidebar-bg: #121a1f;
+  --sidebar-fg: #d8d2c8;
+  --sidebar-non-existant: #b27f72;
+  --sidebar-active: #f0b194;
+  --sidebar-spacer: rgba(232, 225, 214, 0.08);
+  --scrollbar: rgba(232, 225, 214, 0.25);
+  --icons: #b9c4c9;
+  --icons-hover: #f0b194;
+  --links: #8fd0d7;
+  --inline-code-color: #ffd4bf;
+  --theme-popup-bg: #1c262c;
+  --theme-popup-border: rgba(232, 225, 214, 0.12);
+  --theme-hover: rgba(143, 208, 215, 0.12);
+  --quote-bg: rgba(143, 208, 215, 0.08);
+  --quote-border: rgba(143, 208, 215, 0.22);
+  --table-border-color: rgba(232, 225, 214, 0.12);
+  --table-alternate-bg: rgba(255, 255, 255, 0.03);
+  --searchbar-bg: rgba(255, 255, 255, 0.06);
+  --searchbar-fg: #f1ede7;
+  --searchbar-shadow-color: transparent;
+  --searchresults-header-fg: #cbbfaf;
+  --searchresults-border-color: rgba(232, 225, 214, 0.08);
+  --searchresults-li-bg: rgba(255, 255, 255, 0.04);
+  --search-mark-bg: rgba(235, 178, 103, 0.35);
+}
+
+body {
+  font-family: var(--patina-font-body-family);
+  letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.menu-title,
+.chapter li.chapter-item > a strong {
+  font-family: var(--patina-font-heading-family);
+  letter-spacing: 0.015em;
+  font-weight: 700;
+}
+
+#mdbook-content,
+#mdbook-content main,
+.content,
+.content main {
+  line-height: var(--patina-font-body-line);
+  font-size: var(--patina-font-body) !important;
+}
+
+.content main h1 {
+  font-size: var(--patina-font-h1);
+  margin-bottom: 0.75rem;
+  line-height: 1.08;
+}
+
+.content main h2 {
+  font-size: var(--patina-font-h2);
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--patina-line);
+  padding-top: 1.1rem;
+  line-height: 1.16;
+}
+
+.content main h3 {
+  font-size: var(--patina-font-h3);
+  line-height: 1.22;
+}
+
+.content main h1 > a.header,
+.content main h2 > a.header,
+.content main h3 > a.header,
+.content main h4 > a.header,
+.content main h5 > a.header,
+.content main h6 > a.header {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+  cursor: text;
+}
+
+.content main p,
+.content main li {
+  max-width: 72ch;
+}
+
+.content main ul,
+.content main ol {
+  padding-left: 1.2rem;
+}
+
+.content main li + li {
+  margin-top: 0.35rem;
+}
+
+.lead {
+  max-width: 64ch;
+  font-size: var(--patina-font-lead);
+  line-height: var(--patina-font-lead-line);
+  color: var(--patina-muted);
+  margin-bottom: 1.35rem;
+}
+
+.content main blockquote {
+  max-width: 74ch;
+  border-left: 4px solid var(--quote-border);
+  background: var(--quote-bg);
+  border-radius: 0 16px 16px 0;
+  padding: 0.85rem 1rem;
+}
+
+.plotly-figure,
+.mol-viewer {
+  width: 100%;
+  min-height: var(--patina-figure-height);
+  margin: 1rem 0 1.6rem;
+  border: 1px solid var(--patina-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 241, 232, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.interactive-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 1.2rem;
+  text-align: center;
+  color: var(--patina-muted);
+  font-family: var(--patina-font-heading-family);
+  font-size: var(--patina-font-fallback);
+}
+
+.js-plotly-plot .plotly .modebar {
+  background: rgba(255, 255, 255, 0.76) !important;
+  border-radius: 999px;
+}
+
+.tab-group .tab-button {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.tab-group .tab-button[aria-selected="true"] {
+  background: linear-gradient(135deg, rgba(49, 92, 115, 0.16), rgba(139, 75, 62, 0.16));
+  color: var(--fg);
+}
+
+pre {
+  border-radius: 18px;
+  border: 1px solid var(--patina-line);
+  box-shadow: 0 10px 30px rgba(24, 34, 41, 0.08);
+}
+
+code {
+  font-family: var(--patina-font-code-family);
+}
+
+img {
+  border-radius: 18px;
+  border: 1px solid var(--patina-line);
+  box-shadow: var(--patina-shadow);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+pre.mermaid {
+  display: block;
+  width: 100%;
+  max-width: var(--patina-mermaid-max-width);
+  margin: 1.35rem auto 1.85rem;
+  padding: var(--patina-mermaid-padding);
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid var(--patina-mermaid-border-color);
+  border-radius: var(--patina-mermaid-radius);
+  background: transparent;
+  box-shadow: none;
+  scrollbar-gutter: stable both-edges;
+}
+
+pre.mermaid svg {
+  display: block;
+  min-width: clamp(760px, 88vw, var(--patina-mermaid-min-width));
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto;
+}
+
+pre.mermaid .nodeLabel,
+pre.mermaid .edgeLabel,
+pre.mermaid .label {
+  font-family: var(--patina-font-heading-family) !important;
+}
+
+pre.mermaid .nodeLabel {
+  font-size: var(--patina-mermaid-font-size) !important;
+  line-height: 1.28 !important;
+}
+
+pre.mermaid .edgeLabel {
+  font-size: calc(var(--patina-mermaid-font-size) * 0.9) !important;
+}
+
+pre.mermaid .cluster rect {
+  rx: 12px !important;
+  ry: 12px !important;
+}
+
+pre.mermaid::-webkit-scrollbar {
+  height: 10px;
+}
+
+pre.mermaid::-webkit-scrollbar-thumb {
+  background: rgba(32, 48, 58, 0.24);
+  border-radius: 999px;
+}
+
+pre.mermaid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admonition {
+  border-radius: 18px;
+  box-shadow: var(--patina-shadow);
+}
+
+.table-wrapper,
+table {
+  border-radius: 14px;
+  overflow: hidden;
+}
