@@ -1030,6 +1030,8 @@ mod tests {
             args_path = project_dir.join("uv_args.txt").display(),
         )
         .expect("write fake uv");
+        script.flush().expect("flush fake uv");
+        drop(script);
         let mut perms = fs::metadata(&uv_bin).expect("metadata").permissions();
         perms.set_mode(0o755);
         fs::set_permissions(&uv_bin, perms).expect("chmod");
