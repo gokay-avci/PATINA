@@ -51,6 +51,11 @@ jobs:
         with:
           components: clippy
 
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libglib2.0-dev
+
       - name: Cache Cargo and target directories
         uses: Swatinem/rust-cache@v2
         with:
@@ -104,6 +109,11 @@ jobs:
         with:
           components: clippy
 
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libglib2.0-dev
+
       - name: Cache Cargo and target directories
         uses: Swatinem/rust-cache@v2
         with:
@@ -147,6 +157,11 @@ jobs:
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libglib2.0-dev
+
       - name: Cache Cargo and target directories
         uses: Swatinem/rust-cache@v2
         with:
@@ -178,6 +193,11 @@ jobs:
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libglib2.0-dev
 
       - name: Cache Cargo and target directories
         uses: Swatinem/rust-cache@v2
